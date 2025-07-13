@@ -11,3 +11,16 @@ window.addEventListener("scroll", function () {
     navbar.classList.add("py-4");
   }
 });
+
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById("mobile-menu");
+const closeMenuBtn = document.getElementById("close-menu");
+const mobileNav = document.getElementById("mobile-nav");
+
+mobileMenuBtn.addEventListener("click", function () {
+  mobileNav.classList.remove("hidden");
+});
+
+closeMenuBtn.addEventListener("click", function () {
+  mobileNav.classList.add("hidden");
+});
