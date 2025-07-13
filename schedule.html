@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EliteFit Gym | Premium Fitness Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF3E41",
+              secondary: "#1A1D24",
+              accent: "#2D3748",
+              light: "#F8F9FA",
+            },
+            fontFamily: {
+              heading: ["Montserrat", "sans-serif"],
+              body: ["Poppins", "sans-serif"],
+            },
+            animation: {
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-light font-body text-gray-700;
+          scroll-behavior: smooth;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+          @apply font-heading text-secondary;
+        }
+        .section-padding {
+          @apply py-20 px-4 md:px-8 lg:px-16;
+        }
+        .btn {
+          @apply inline-block px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105;
+        }
+        .btn-primary {
+          @apply bg-primary text-white hover:bg-red-500;
+        }
+        .btn-secondary {
+          @apply bg-secondary text-white hover:bg-gray-900;
+        }
+      }
+      @layer utilities {
+        .text-gradient {
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500;
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .shadow-soft {
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+      }
+    </style>
+  </head>
+  <body>
+     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-white">
+          <span class="text-gradient">ELITEFIT</span>
+        </a>
+        <div class="hidden md:flex space-x-10">
+          <a href="#home" class="text-white hover:text-primary transition"
+            >Home</a
+          >
+          <a href="#about" class="text-white hover:text-primary transition"
+            >About</a
+          >
+          <a href="#programs" class="text-white hover:text-primary transition"
+            >Programs</a
+          >
+          <a href="#pricing" class="text-white hover:text-primary transition"
+            >Pricing</a
+          >
+          <a href="#contact" class="text-white hover:text-primary transition"
+            >Contact</a
+          >
+        </div>
+        <div class="hidden md:block">
+          <a href="#pricing" class="btn btn-primary">Join Now</a>
+        </div>
+        <button id="mobile-menu" class="md:hidden text-white text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-nav"
+        class="md:hidden fixed inset-0 bg-secondary z-40 hidden transition-all duration-500"
+      >
+        <div class="flex justify-end p-6">
+          <button id="close-menu" class="text-white text-3xl">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+          <a
+            href="#home"
+            class="text-white text-2xl font-bold hover:text-primary transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="text-white text-2xl font-bold hover:text-primary transition"
+            >About</a
+          >
+          <a
+            href="#programs"
+            class="text-white text-2xl font-bold hover:text-primary transition"
+            >Programs</a
+          >
+          <a
+            href="#pricing"
+            class="text-white text-2xl font-bold hover:text-primary transition"
+            >Pricing</a
+          >
+          <a
+            href="#contact"
+            class="text-white text-2xl font-bold hover:text-primary transition"
+            >Contact</a
+          >
+          <a href="#pricing" class="btn btn-primary mt-8">Join Now</a>
+        </div>
+      </div>
+    </nav>
+
+     <!-- Schedule Navigation -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                    <button class="schedule-day btn btn-primary active" data-day="monday">Monday</button>
+                    <button class="schedule-day btn bg-white text-secondary" data-day="tuesday">Tuesday</button>
+                    <button class="schedule-day btn bg-white text-secondary" data-day="wednesday">Wednesday</button>
+                    <button class="schedule-day btn bg-white text-secondary" data-day="thursday">Thursday</button>
+                    <button class="schedule-day btn bg-white text-secondary" data-day="friday">Friday</button>
+                    <button class="schedule-day btn bg-white text-secondary" data-day="saturday">Saturday</button>
+                    <button class="schedule-day btn bg-white text-secondary" data-day="sunday">Sunday</button>
+                </div>
+
+                <!-- Monday Schedule -->
+                <div class="day-content active" id="monday-content">
+                    <div class="bg-white rounded-2xl shadow-soft overflow-hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-8">
+                            <!-- Class 1 -->
+                            <div class="border border-gray-100 rounded-xl p-6 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold">Morning Yoga</h3>
+                                        <p class="text-gray-500">With Sarah Johnson</p>
+                                    </div>
+                                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold">7:00 AM</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Start your day with rejuvenating yoga poses and breathing techniques.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm bg-gray-100 px-2 py-1 rounded">Level: Beginner</span>
+                                    <button class="text-primary font-bold hover:underline">Book Now</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Class 2 -->
+                            <div class="border border-gray-100 rounded-xl p-6 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold">HIIT Blast</h3>
+                                        <p class="text-gray-500">With Michael Chen</p>
+                                    </div>
+                                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold">9:30 AM</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">High-intensity interval training to maximize calorie burn and endurance.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm bg-gray-100 px-2 py-1 rounded">Level: Advanced</span>
+                                    <button class="text-primary font-bold hover:underline">Book Now</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Class 3 -->
+                            <div class="border border-gray-100 rounded-xl p-6 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold">Strength Training</h3>
+                                        <p class="text-gray-500">With David Wilson</p>
+                                    </div>
+                                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold">5:00 PM</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Build muscle and increase strength with our expert-led weightlifting session.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm bg-gray-100 px-2 py-1 rounded">Level: Intermediate</span>
+                                    <button class="text-primary font-bold hover:underline">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuesday Schedule -->
+                <div class="day-content" id="tuesday-content">
+                    <!-- Content would be similar to Monday but with Tuesday classes -->
+                    <div class="bg-white rounded-2xl shadow-soft overflow-hidden p-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4">Tuesday Classes</h3>
+                        <p class="text-gray-600 mb-6">View our exciting Tuesday class schedule including Spin Cycle, Power Yoga, and Core Strength.</p>
+                        <button class="btn btn-primary">View Tuesday Schedule</button>
+                    </div>
+                </div>
+
+                <!-- Other days would follow similar pattern -->
+            </div>
+        </section>
+
+        <!-- Class Categories -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">CLASS CATEGORIES</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="max-w-2xl mx-auto text-gray-600">Explore our diverse range of fitness classes designed for all levels</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center transition-transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-running text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cardio</h3>
+                        <p class="text-gray-600">Boost your heart health and endurance with our high-energy cardio classes.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center transition-transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-dumbbell text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Strength</h3>
+                        <p class="text-gray-600">Build muscle and increase strength with our expert-led weight training.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center transition-transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-spa text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Mind & Body</h3>
+                        <p class="text-gray-600">Find balance and flexibility with our yoga and meditation sessions.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center transition-transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Group Fitness</h3>
+                        <p class="text-gray-600">Join our community classes for motivation and group energy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Footer -->
+    <footer class="bg-secondary text-gray-300 py-12" data-aos="fade-up">
+      <div class="container mx-auto px-4" data-aos="fade-up">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="text-2xl font-bold">
+              <span class="text-gradient">ELITEFIT</span>
+            </a>
+            <p class="mt-2 max-w-md">
+              Your premier destination for fitness and wellness in the heart of
+              the city.
+            </p>
+          </div>
+
+          <div class="flex space-x-8">
+            <a href="#" class="hover:text-white transition">Terms</a>
+            <a href="#" class="hover:text-white transition">Privacy</a>
+            <a href="#" class="hover:text-white transition">Careers</a>
+            <a href="#" class="hover:text-white transition">FAQ</a>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <p>
+            &copy; 2025 EliteFit Gym. All rights reserved. Developed by Thierry
+          </p>
+        </div>
+      </div>
+    </footer>
+    </div>
+
+
+    <!--JavaScript-->
+    <script src="scripts/index.js"></script>
+     <script src="scripts/schedule.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 80,
+      });
+    </script>
+  </body>
+</html>
