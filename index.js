@@ -42,3 +42,23 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
+
+// Simple animations on scroll
+const observerOptions = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.1,
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate-fadeInUp");
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll(".section-padding > *").forEach((section) => {
+  observer.observe(section);
+});
